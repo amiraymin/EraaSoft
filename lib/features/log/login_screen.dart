@@ -1,4 +1,6 @@
 import 'package:apptask/features/home/home_screen.dart';
+import 'package:apptask/gen/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,14 +16,24 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              IconButton(
+                onPressed: () {
+                  if (context.locale.languageCode == 'ar') {
+                    context.setLocale(Locale('en'));
+                  } else {
+                    context.setLocale(Locale('ar'));
+                  }
+                },
+                icon: Icon(Icons.language),
+              ),
               Icon(
                 Icons.person_rounded,
                 color: Color.fromARGB(255, 6, 40, 231),
                 size: 100,
               ),
-              Text("create your profile", style: TextStyle(fontSize: 19)),
+              Text(LocaleKeys.createYourProfile.tr(), style: TextStyle(fontSize: 19)),
               Text(
-                "Add your name and profile picture",
+                LocaleKeys.addYourNameAndProfilePicture.tr(),
                 style: TextStyle(fontSize: 19),
               ),
               SizedBox(
@@ -31,10 +43,9 @@ class LoginScreen extends StatelessWidget {
                     FocusScope.of(context).unfocus();
                   },
                   decoration: InputDecoration(
-                    labelText: "Full Name",
+                    labelText: LocaleKeys.fullName.tr(),
                     border: InputBorder.none,
-                    ),
-                           
+                  ),
                 ),
               ),
               25.verticalSpace,
@@ -42,9 +53,8 @@ class LoginScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                     MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                      ));
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
                 },
                 child: Container(
                   height: 50,
@@ -55,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "Continue",
+                      LocaleKeys.continuee.tr(),
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
