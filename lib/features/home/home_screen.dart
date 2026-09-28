@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 15.verticalSpace,
                 ListView.separated(
-                   shrinkWrap: true,
+                  shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) =>

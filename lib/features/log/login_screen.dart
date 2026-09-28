@@ -1,11 +1,34 @@
+import 'dart:io';
+
+import 'package:apptask/core/widgets/main_bottom.dart';
 import 'package:apptask/features/home/home_screen.dart';
 import 'package:apptask/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  XFile? image;
+  XFile? photo;
+  final picker = ImagePicker();
+
+  pickImageFromCamera() async {
+    photo = await picker.pickImage(source: ImageSource.camera);
+    setState(() {});
+  }
+
+  pickImageFromGallary() async {
+    image = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +50,51 @@ class LoginScreen extends StatelessWidget {
                   },
                   icon: Icon(Icons.language),
                 ),
-                Icon(
-                  Icons.person_rounded,
-                  color: Color.fromARGB(255, 6, 40, 231),
-                  size: 100,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => Padding(
+                        padding: EdgeInsets.all(16.0.r),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            MainBottom(
+                              titel: "Camera",
+                              onTap: () {
+                                Navigator.pop(context);
+                                pickImageFromCamera();
+                              },
+                            ),
+                            MainBottom(
+                              titel: "Gallary",
+                              onTap: () {
+                                Navigator.pop(context);
+                                pickImageFromGallary();
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.grey.shade400,
+                    backgroundImage: photo!= null ? Image.file(File(photo?.path??"")).image:null,
+                    child: photo == null?
+                     Icon(Icons.person_rounded,color: Color.fromARGB(255, 6, 40, 231),size: 75,): null),
+
                 ),
-                Text(LocaleKeys.createYourProfile.tr(), style: TextStyle(fontSize: 19)),
+                   
+                      
+                  
+                
+                20.verticalSpace,
+                Text(
+                  LocaleKeys.createYourProfile.tr(),
+                  style: TextStyle(fontSize: 19),
+                ),
                 Text(
                   LocaleKeys.addYourNameAndProfilePicture.tr(),
                   style: TextStyle(fontSize: 19),
@@ -54,7 +116,9 @@ class LoginScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
                     );
                   },
                   child: Container(
