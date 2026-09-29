@@ -1,0 +1,17 @@
+
+{
+    "createYourProfile":"انشئ صورة البروفايل",
+    "addYourNameAndProfilePicture":"اضف اسمك و صورتك الشخصية",
+    "fullName":"الاسم بالكامل",
+    "continuee":"الاستمرار",
+    "todaysTasks":"مهام اليوم",
+    "GoodMorning":"صباح الخير👋 ",
+    "Taskdescription":"الوصف",
+    "TaskTitel":"عنوان المهمة",
+    "AddTask":"اضافة مهمة",
+    "pending": "قيد الانتظار",
+    "in_progress": "قيد التنفيذ",
+    "done": "مكتمل",
+    "tasks" : "مهمة",
+    "Add":"أضف"
+}

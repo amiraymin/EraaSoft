@@ -7,5 +7,14 @@ abstract class  LocaleKeys {
   static const addYourNameAndProfilePicture = 'addYourNameAndProfilePicture';
   static const fullName = 'fullName';
   static const continuee = 'continuee';
-
+  static const todaysTasks = 'todaysTasks';
+  static const GoodMorning = 'GoodMorning';
+  static const TaskTitel = 'TaskTitel';
+  static const Taskdescription = 'Taskdescription';
+  static const AddTask = 'AddTask';
+  static const pending = 'pending';
+  static const in_progress = 'in_progress';
+  static const done = 'done';
+  static const tasks = 'tasks';
+  static const Add = 'Add';
 }

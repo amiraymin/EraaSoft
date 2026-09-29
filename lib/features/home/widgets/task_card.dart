@@ -1,6 +1,7 @@
+import 'package:apptask/features/add_task/add_task_screen.dart';
 import 'package:apptask/features/home/models/task_card_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 
 class TaskCard extends StatelessWidget {
   final TaskCardModel task;
@@ -17,7 +18,7 @@ class TaskCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
+              color: Colors.grey,
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -35,7 +36,7 @@ class TaskCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-      
+
             // title, subtitle, status pill
             Expanded(
               child: Column(
@@ -52,17 +53,23 @@ class TaskCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     task.details,
-                    style: const TextStyle(fontSize: 13, color: Color(0xff7C7C7C)),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Color(0xff7C7C7C),
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: task.barColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      task.status,
+                      task.status.tr(),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -73,8 +80,16 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
             ),
-      
-            const Icon(Icons.chevron_right, color: Color(0xff7C7C7C)),
+            
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddTaskScreen()),
+                );
+              },
+              child: Icon(Icons.chevron_right, color: Color(0xff7C7C7C)),
+            ),
           ],
         ),
       ),
