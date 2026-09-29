@@ -8,4 +8,4 @@ A new Flutter project.
 
 ![App screens](assets/images/screenshots/Screenshot%202026-09-30%20014010.png)
 
-![App screens](assets/images/screenshots/Screenshot%202026-09-30%20002435.png)
+![App screens](assets/images/screenshots/2a6efec1-6beb-461c-999e-0138ed7a60d2.jpg)

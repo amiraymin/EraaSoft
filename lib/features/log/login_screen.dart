@@ -18,18 +18,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  XFile? image;
-  XFile? photo;
+  XFile? profileImage;
   final picker = ImagePicker();
 
-  pickImageFromCamera() async {
-    photo = await picker.pickImage(source: ImageSource.camera);
-    setState(() {});
-  }
-
-  pickImageFromGallary() async {
-    image = await picker.pickImage(source: ImageSource.gallery);
-    setState(() {});
+  Future<void> pickProfileImage(ImageSource source) async {
+    final selectedImage = await picker.pickImage(source: source);
+    if (selectedImage == null || !mounted) return;
+    setState(() => profileImage = selectedImage);
   }
 
   @override
@@ -64,14 +59,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             titel: "Camera",
                             onTap: () {
                               Navigator.pop(context);
-                              pickImageFromCamera();
+                              pickProfileImage(ImageSource.camera);
                             },
                           ),
                           MainBottom(
                             titel: "Gallary",
                             onTap: () {
                               Navigator.pop(context);
-                              pickImageFromGallary();
+                              pickProfileImage(ImageSource.gallery);
                             },
                           ),
                         ],
@@ -82,10 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: CircleAvatar(
                   radius: 50.r,
                   backgroundColor: Colors.grey.shade400,
-                  backgroundImage: photo != null
-                      ? Image.file(File(photo?.path ?? "")).image
+                    backgroundImage: profileImage != null
+                      ? Image.file(File(profileImage!.path)).image
                       : null,
-                  child: photo == null
+                    child: profileImage == null
                       ? Icon(
                           Icons.person_rounded,
                           color: Color.fromARGB(255, 6, 40, 231),
