@@ -9,3 +9,9 @@ A new Flutter project.
 ![App screens](assets/images/screenshots/Screenshot%202026-09-30%20014010.png)
 
 ![App screens](assets/images/screenshots/2a6efec1-6beb-461c-999e-0138ed7a60d2.jpg)
+
+## Add Task
+
+![Add task screen](assets/images/screenshots/4.2.jpeg)
+
+![Date and time pickers](assets/images/screenshots/WhatsApp%20Image%202026-10-01%20at%205.05.35%20PM.jpeg)
