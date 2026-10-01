@@ -5,22 +5,24 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String hintText;
   final int? maximimLins;
-  const CustomTextField({super.key, this.controller, required this.hintText,this.maximimLins });
+  final void Function()? onTap;
+  const CustomTextField({super.key, this.controller, required this.hintText,this.maximimLins, this.onTap });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300.w,
-      child: TextFormField(
-        maxLines:maximimLins ,
-        controller: controller,
-        onTapUpOutside: (v) {
-          FocusScope.of(context).unfocus();
-        },
-        decoration: InputDecoration(
-          labelText: hintText,
-          border: InputBorder.none,
-        ),
+
+    return TextFormField(
+      onTap: onTap,
+      readOnly: onTap != null,
+      maxLines:maximimLins ,
+      controller: controller,
+      onTapUpOutside: (v) {
+        FocusScope.of(context).unfocus();
+      },
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+        labelText: hintText,
+        border: InputBorder.none,
       ),
     );
   }

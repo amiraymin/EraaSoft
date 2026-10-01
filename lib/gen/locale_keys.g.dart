@@ -17,4 +17,9 @@ abstract class  LocaleKeys {
   static const done = 'done';
   static const tasks = 'tasks';
   static const Add = 'Add';
+  static const StartDate = 'StartDate';
+  static const EndDate = 'EndDate';
+  static const SaveTask = 'SaveTask';
+  static const Status = 'Status';
+  static const ChoseColor = 'ChoseColor';
 }

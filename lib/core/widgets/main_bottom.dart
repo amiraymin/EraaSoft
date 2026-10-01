@@ -18,7 +18,7 @@ class MainBottom extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            color: Colors.deepPurple.shade500,
+            color: Color(0xFF515b92),
           ),
           child: Text(
             titel,

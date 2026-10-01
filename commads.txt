@@ -1,0 +1,8 @@
+Clean & Conflict Resolution Command
+If you changed your database models and face errors,
+this forces a fresh file generation by deleting older generated caches:
+
+flutter pub run build_runner build --delete-conflicting-outputs
+
+
+

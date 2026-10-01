@@ -12,5 +12,10 @@
     "in_progress": "In Progress",
     "done": "Done",
     "tasks" : "tasks",
-    "Add":"Add"
+    "Add":"Add",
+    "StartDate":"Start Date",
+    "EndDate":"End Date",
+    "SaveTask":"Save Task",
+    "Status":"Status",
+    "ChoseColor":"Choose Color"
 }
