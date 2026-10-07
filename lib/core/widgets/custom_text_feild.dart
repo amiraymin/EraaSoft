@@ -11,18 +11,27 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return TextFormField(
-      onTap: onTap,
-      readOnly: onTap != null,
-      maxLines:maximimLins ,
-      controller: controller,
-      onTapUpOutside: (v) {
-        FocusScope.of(context).unfocus();
-      },
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
-        labelText: hintText,
-        border: InputBorder.none,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: TextFormField(
+        
+        onTap: onTap,
+        readOnly: onTap != null,
+        maxLines:maximimLins ,
+        controller: controller,
+        onTapUpOutside: (v) {
+          FocusScope.of(context).unfocus();
+        },
+        decoration: InputDecoration(
+          fillColor: const Color.fromARGB(112, 133, 133, 133),
+          filled: true,
+          contentPadding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+          labelText: hintText,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
+        ),
       ),
     );
   }

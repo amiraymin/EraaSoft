@@ -1,3 +1,4 @@
+import 'package:apptask/core/models/task_model.dart';
 import 'package:apptask/core/utils/app_constants.dart';
 import 'package:apptask/features/login/data/user_model.dart';
 import 'package:apptask/my_app.dart'; // Imports the app's root widget from the MyApp file.
@@ -22,7 +23,9 @@ void main() async {
   */
   await EasyLocalization.ensureInitialized(); // Loads the localization settings before the app runs.*/
   await Hive.initFlutter(); // Initializes Hive for Flutter, allowing it to store data locally on the device.*/
+  Hive.registerAdapter(TaskModelAdapter()); // Registers the TaskModel adapter so Hive knows how to store and retrieve TaskModel objects.
   Hive.registerAdapter(UserModelAdapter()); // Registers the UserModel adapter so Hive knows how to store and retrieve UserModel objects.
+  await Hive.openBox<TaskModel>(AppConstants.taskBoxName); // Opens a Hive box named 'taskBox' for storing TaskModel instances.
   await Hive.openBox<UserModel>(AppConstants.userBoxName); // Opens a Hive box named 'userBox' for storing UserModel instances.
   runApp(
     EasyLocalization(
