@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           MainBottom(
-                            titel: "Camera",
+                            titel: LocaleKeys.camera.tr(),
                             onTap: () {
                               Navigator.pop(
                                 context,
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                           ),
                           MainBottom(
-                            titel: "Gallary",
+                            titel: LocaleKeys.gallery.tr(),
                             onTap: () {
                               // Runs when the user chooses the gallery option.
                               Navigator.pop(

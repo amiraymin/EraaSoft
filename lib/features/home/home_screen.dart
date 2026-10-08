@@ -29,11 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
+        onPressed: ()async {
+         await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AddTaskScreen()),
           );
+          setState(() {
+            // Refresh the state after returning from the AddTaskScreen to update the task list.
+          });
         },
         label: Row(children: [Icon(Icons.add), Text(LocaleKeys.Add.tr())]),
       ),

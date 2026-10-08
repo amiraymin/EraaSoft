@@ -10,8 +10,12 @@ A new Flutter project.
 
 ![App screens](assets/images/screenshots/2a6efec1-6beb-461c-999e-0138ed7a60d2.jpg)
 
+## Empty Tasks
+
+![Home screen when there are no tasks](assets/images/screenshots/empty-tasks.jpeg)
+
 ## Add Task
 
-![Add task screen](assets/images/screenshots/4.2.jpeg)
+![Add task screen](assets/images/screenshots/add-task-bilingual.jpeg)
 
 ![Date and time pickers](assets/images/screenshots/WhatsApp%20Image%202026-10-01%20at%205.05.35%20PM.jpeg)

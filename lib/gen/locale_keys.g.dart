@@ -22,4 +22,13 @@ abstract class  LocaleKeys {
   static const SaveTask = 'SaveTask';
   static const Status = 'Status';
   static const ChoseColor = 'ChoseColor';
+  static const deleteTask = 'deleteTask';
+  static const confirmDeleteTask = 'confirmDeleteTask';
+  static const cancel = 'cancel';
+  static const chooseStatus = 'chooseStatus';
+  static const completed = 'completed';
+  static const inProgress = 'inProgress';
+  static const camera = 'camera';
+  static const gallery = 'gallery';
+  static const user = 'user';
 }

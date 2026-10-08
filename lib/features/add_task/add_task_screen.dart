@@ -1,9 +1,14 @@
+
+import 'package:apptask/core/models/task_model.dart';
+import 'package:apptask/core/utils/app_constants.dart';
 import 'package:apptask/core/widgets/custom_text_feild.dart';
 import 'package:apptask/core/widgets/main_bottom.dart';
+import 'package:apptask/features/add_task/widgets/drop_down.dart';
 import 'package:apptask/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -22,8 +27,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     Color(0xffF44336),
     Color(0xff009688),
   ];
-  final _dateController = TextEditingController();
-  final _timeController = TextEditingController();
 
   var titelController = TextEditingController();
   var descriptionController = TextEditingController();
@@ -31,6 +34,18 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   var dateController = TextEditingController();
   var timeController = TextEditingController();
   int? selectedColorIndex; // Index of the selected color in the taskColors list
+
+ void saveTask(TaskModel task){
+  Hive.box<TaskModel>(AppConstants.taskBoxName).add(task).then((value) {
+    Navigator.pop(context); // Close the AddTaskScreen after saving the task
+    print('Task saved with key: $value');
+  }).catchError((error) {
+    // Handle error while saving task
+    print('Error saving task: $error');
+  });
+
+ }
+
 
   @override
   void dispose() {
@@ -116,38 +131,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
             ),
             10.verticalSpace,
-            DropdownMenu(
-              inputDecorationTheme: InputDecorationTheme(
-                fillColor: const Color.fromARGB(112, 133, 133, 133),
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 25.w,
-                  vertical: 10.h,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r),
-                  borderSide: const BorderSide(color: Colors.transparent),
-                ),
-              ),
-              width: double.infinity,
-              dropdownMenuEntries: [
-                DropdownMenuEntry(
-                  value: LocaleKeys.in_progress.tr(),
-                  label: LocaleKeys.in_progress.tr(),
-                  style: ButtonStyle(foregroundColor: .all(Color(0xffF8A44C))),
-                ),
-                DropdownMenuEntry(
-                  value: LocaleKeys.done.tr(),
-                  label: LocaleKeys.done.tr(),
-                  style: ButtonStyle(foregroundColor: .all(Colors.green)),
-                ),
-                DropdownMenuEntry(
-                  value: LocaleKeys.pending.tr(),
-                  label: LocaleKeys.pending.tr(),
-                  style: ButtonStyle(foregroundColor: .all(Color(0xff4C6FFF))),
-                ),
-              ],
-            ),
+           StatusDropDowen(
+            onChange: (value) {
+              statusController.text = value ?? ''; // Update the statusController with the selected value
+       // Print the selected value to the console
+            }),
             20.verticalSpace,
             Text(
               LocaleKeys.ChoseColor.tr(),
@@ -169,9 +157,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     child: CircleAvatar(
                       radius: 20.r,
                       backgroundColor: taskColors[index],
-                      child: selectedColorIndex == index
-                          ? Icon(Icons.check, color: Colors.white)
-                          : null,
+                      child: selectedColorIndex == index? Icon(Icons.check, color: Colors.white) : null,
                     ),
                   );
                 },
@@ -181,7 +167,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             MainBottom(
               titel: LocaleKeys.SaveTask.tr(),
               onTap: () {
-                // Handle the save task action here
+              saveTask(TaskModel(
+                title: titelController.text,
+                description: descriptionController.text,
+                status: statusController.text,
+                date: dateController.text,
+                time: timeController.text,
+                color: taskColors[selectedColorIndex ?? 0].toARGB32(), // Use the selected color or default to the first color
+              ));
               },
             ),
           ],

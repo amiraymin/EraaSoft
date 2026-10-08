@@ -18,7 +18,9 @@ class WelcomeRow extends StatefulWidget {
 class _WelcomeRowState extends State<WelcomeRow> {
   @override
   Widget build(BuildContext context) {
-       UserModel? user = Hive.box<UserModel>(AppConstants.userBoxName).get(AppConstants.CurrentUser);
+    UserModel? user = Hive.box<UserModel>(
+      AppConstants.userBoxName,
+    ).get(AppConstants.CurrentUser);
     return Padding(
       padding: EdgeInsets.all(10.0.r),
       child: Row(
@@ -26,17 +28,24 @@ class _WelcomeRowState extends State<WelcomeRow> {
           CircleAvatar(
             radius: 25.r,
             backgroundColor: Colors.blueAccent,
-            backgroundImage: user?.image != null ? FileImage(File(user!.image!)) : null,
-            child: user?.image == null ? Icon(Icons.person, color: Colors.white, size: 30.r) : null,
+            backgroundImage: user?.image != null
+                ? FileImage(File(user!.image!))
+                : null,
+            child: user?.image == null
+                ? Icon(Icons.person, color: Colors.white, size: 30.r)
+                : null,
           ),
           20.horizontalSpace,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocaleKeys.GoodMorning.tr(), style: TextStyle(fontSize: (15.sp))),
                 Text(
-                  user?.name ?? "User", // Display the user's full name
+                  LocaleKeys.GoodMorning.tr(),
+                  style: TextStyle(fontSize: (15.sp)),
+                ),
+                Text(
+                  user?.name ?? LocaleKeys.user.tr(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17.sp,
@@ -45,7 +54,21 @@ class _WelcomeRowState extends State<WelcomeRow> {
               ],
             ),
           ),
-          Icon(Icons.notifications_none),
+          IconButton(
+            onPressed: () {
+              if (context.locale.languageCode == 'ar') {
+                // Checks whether the app is currently using Arabic.
+                context.setLocale(
+                  Locale('en'),
+                ); // Switches the app language to English.
+              } else {
+                context.setLocale(
+                  Locale('ar'),
+                ); // Switches the app language to Arabic.
+              }
+            },
+            icon: Icon(Icons.language),
+          ),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:apptask/features/home/models/task_card_model.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive/hive.dart';
 part 'task_model.g.dart';

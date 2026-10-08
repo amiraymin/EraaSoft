@@ -6,8 +6,8 @@
     "continuee":"الاستمرار",
     "todaysTasks":"مهام اليوم",
     "GoodMorning":"صباح الخير👋 ",
-    "Taskdescription":"الوصف",
     "TaskTitel":"عنوان المهمة",
+    "Taskdescription":"الوصف",
     "AddTask":"اضافة مهمة",
     "pending": "قيد الانتظار",
     "in_progress": "قيد التنفيذ",
@@ -18,5 +18,14 @@
     "EndDate":"تاريخ الانتهاء",
     "SaveTask":"حفظ المهمة",
     "Status":"الحالة",
-    "ChoseColor":"اختر اللون"
+    "ChoseColor":"اختر اللون",
+    "deleteTask":"حذف المهمة",
+    "confirmDeleteTask":"هل أنت متأكد أنك تريد حذف هذه المهمة؟",
+    "cancel":"إلغاء",
+    "chooseStatus":"اختر الحالة",
+    "completed":"مكتملة",
+    "inProgress":"قيد التنفيذ",
+    "camera":"الكاميرا",
+    "gallery":"معرض الصور",
+    "user":"مستخدم"
 }

@@ -6,30 +6,41 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final int? maximimLins;
   final void Function()? onTap;
-  const CustomTextField({super.key, this.controller, required this.hintText,this.maximimLins, this.onTap });
+  const CustomTextField({
+    super.key,
+    this.controller,
+    required this.hintText,
+    this.maximimLins,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: TextFormField(
-        
         onTap: onTap,
         readOnly: onTap != null,
-        maxLines:maximimLins ,
+        maxLines: maximimLins,
         controller: controller,
         onTapUpOutside: (v) {
           FocusScope.of(context).unfocus();
         },
         decoration: InputDecoration(
-          fillColor: const Color.fromARGB(112, 133, 133, 133),
+          fillColor: Colors.grey.shade300,
           filled: true,
-          contentPadding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
-          labelText: hintText,
+          hintText: hintText,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.r),
-            borderSide: const BorderSide(color: Colors.transparent),
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(20.r),
           ),
         ),
       ),

@@ -6,6 +6,7 @@
     "continuee":"Continue",
     "todaysTasks":"Today's Tasks",
     "GoodMorning":"Good Morning 👋",
+    "TaskTitel":"Task Title",
     "Taskdescription":"Task Description",
     "AddTask":"Add Task",
     "pending": "Pending",
@@ -17,5 +18,14 @@
     "EndDate":"End Date",
     "SaveTask":"Save Task",
     "Status":"Status",
-    "ChoseColor":"Choose Color"
+    "ChoseColor":"Choose Color",
+    "deleteTask":"Delete task",
+    "confirmDeleteTask":"Are you sure you want to delete this task?",
+    "cancel":"Cancel",
+    "chooseStatus":"Choose status",
+    "completed":"Completed",
+    "inProgress":"In Progress",
+    "camera":"Camera",
+    "gallery":"Gallery",
+    "user":"User"
 }
